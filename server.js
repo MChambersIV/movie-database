@@ -14,16 +14,21 @@ const db = mysql.createConnection(
       password: 'password',
       database: 'movie_db'
     },
-    console.log(`Connected to the courses_db database.`)
+    console.log(`Connected to the movie_db database.`)
   );
 
-  db.query('SELECT * FROM movies', function (err, results) {
-    console.log(results);
+  const movieFind = db.query('SELECT * FROM movies', function (err, results) {
+    return results;
   });
 
-  db.query('SELECT * FROM reviews', function (err, results) {
-    console.log(results);
-  });
+  db.query('SELECT * FROM reviews');
+
+  app.get('/api/movies', (req, res) => {
+    console.info(`${req.method} request received`);
+    
+   return res.send(movieFind);
+
+});
 
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
