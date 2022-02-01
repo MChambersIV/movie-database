@@ -21,6 +21,10 @@ const db = mysql.createConnection(
     console.log(results);
   });
 
+  db.query('SELECT * FROM reviews', function (err, results) {
+    console.log(results);
+  });
+
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });

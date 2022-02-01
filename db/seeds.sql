@@ -4,3 +4,10 @@ VALUES ("Chicago Fire"),
         ("Midsummer Murders"),
         ("Fringe"),
         ("Lost");
+
+INSERT INTO reviews (name)
+VALUES ("Fire Bad"),
+        ("Fighting Bad"),
+        ("Murders Bad"),
+        ("Fringe Bad"),
+        ("Lost Good");
