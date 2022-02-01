@@ -1,5 +1,5 @@
 {
-  "name": "min-proj",
+  "name": "movie-database",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -9,5 +9,9 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mysql2": "^2.2.5"
+  }
 }

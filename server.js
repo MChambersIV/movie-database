@@ -12,7 +12,15 @@ const db = mysql.createConnection(
       host: 'localhost',
       user: 'root',
       password: 'password',
-      database: 'courses_db'
+      database: 'movie_db'
     },
     console.log(`Connected to the courses_db database.`)
   );
+
+  db.query('SELECT * FROM movies', function (err, results) {
+    console.log(results);
+  });
+
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
