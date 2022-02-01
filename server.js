@@ -8,28 +8,28 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 const db = mysql.createConnection(
-    {
-      host: 'localhost',
-      user: 'root',
-      password: 'password',
-      database: 'movie_db'
-    },
-    console.log(`Connected to the movie_db database.`)
-  );
+  {
+    host: 'localhost',
+    user: 'root',
+    password: 'password',
+    database: 'movie_db'
+  },
+  console.log(`Connected to the movie_db database.`)
+);
 
-  const movieFind = db.query('SELECT * FROM movies', function (err, results) {
-    return results;
+
+// db.query('SELECT * FROM reviews');
+
+app.get('/api/movies', (req, res) => {
+  console.info(`${req.method} request received`);
+
+  db.query('SELECT * FROM movies', function (err, results) {
+    return res.json(results);
   });
 
-  db.query('SELECT * FROM reviews');
-
-  app.get('/api/movies', (req, res) => {
-    console.info(`${req.method} request received`);
-    
-   return res.send(movieFind);
 
 });
 
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
