@@ -18,17 +18,42 @@ const db = mysql.createConnection(
 );
 
 
-// db.query('SELECT * FROM reviews');
-
 app.get('/api/movies', (req, res) => {
   console.info(`${req.method} request received`);
 
   db.query('SELECT * FROM movies', function (err, results) {
     return res.json(results);
   });
-
-
 });
+
+app.get('/api/add-movie', (req, res) => {
+  console.info(`get request received add movies`)
+});
+
+
+app.post('/api/add-movie', (req, res) => {
+  console.info(`${req.method} request received to add movie`);
+
+  const { title, review } = req.body;
+
+  if (title && review) {
+    const newMovie = {
+      title,
+      review
+    };
+
+    const response = {
+      status: 'success',
+      body: newMovie,
+    };
+
+    console.log(response);
+    res.json(response);
+  } else {
+    res.json('Error in posting review');
+  }
+});
+
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
